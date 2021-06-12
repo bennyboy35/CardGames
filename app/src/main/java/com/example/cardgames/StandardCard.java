@@ -6,8 +6,8 @@ import org.apache.commons.lang3.ArrayUtils;
 
 public class StandardCard extends Card implements IStandardCard{
 
-    ECardType cardType;
-    ESuite cardSuite;
+    private ECardType cardType;
+    private ESuite cardSuite;
 
     public StandardCard(ECardType cardType, ESuite cardSuite){
         this.cardSuite = cardSuite;
