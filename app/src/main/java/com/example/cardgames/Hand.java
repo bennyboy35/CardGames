@@ -1,4 +1,4 @@
 package com.example.cardgames;
 
-public class DrawPile {
+public class Hand {
 }

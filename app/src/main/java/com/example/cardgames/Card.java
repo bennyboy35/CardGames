@@ -1,4 +1,6 @@
 package com.example.cardgames;
 
-public class Card {
+public abstract class Card implements ICard{
+
+
 }
