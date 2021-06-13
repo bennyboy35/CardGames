@@ -12,12 +12,15 @@ public class Deck {
 
     Deck(){
 
-        for (ESuite cardSuit : ESuite.values()){
-            for (ECardType cardType : ECardType.values()){
+        generateStandardCards();
+        Collections.shuffle(cards);
+    }
 
-                StandardCard card = new StandardCard(cardType, cardSuit);
-                cards.add(card);
-            }
+    Deck(int numOfJokers){
+        generateStandardCards();
+        for (int i = 0; i < numOfJokers; i++){
+
+            cards.add(new Joker());
         }
         Collections.shuffle(cards);
     }
@@ -25,6 +28,16 @@ public class Deck {
     Deck(List<ICard> cards){
         this.cards = cards;
 
+    }
+
+    private void generateStandardCards() {
+        for (ESuite cardSuit : ESuite.values()){
+            for (ECardType cardType : ECardType.values()){
+
+                StandardCard card = new StandardCard(cardType, cardSuit);
+                cards.add(card);
+            }
+        }
     }
 
     public int getNumOfRemainingCards(){
