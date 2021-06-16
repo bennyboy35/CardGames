@@ -11,7 +11,7 @@ public class Test_Joker {
 
 
     @Test(dataProvider = "cardTests")
-    public void test_CardRankTest(ECardType cardType, ESuite cardSuite) {
+    public void test_CardRankTest(EPontoonCardType cardType, ESuite cardSuite) {
         Joker joker = new Joker();
         assertTrue(joker.isJoker());
         StandardCard card1 = new StandardCard(cardType, cardSuite);
@@ -27,13 +27,13 @@ public class Test_Joker {
     public Object[][] rankTests() {
 
         return new Object[][]{
-                {ECardType.FOUR, ESuite.HEARTS},
-                {ECardType.ACE, ESuite.DIAMONDS},
-                {ECardType.JACK, ESuite.HEARTS},
-                {ECardType.TEN, ESuite.HEARTS},
-                {ECardType.TWO, ESuite.SPADES},
-                {ECardType.FIVE, ESuite.CLUBS},
-                {ECardType.EIGHT, ESuite.DIAMONDS},
+                {EPontoonCardType.FOUR, ESuite.HEARTS},
+                {EPontoonCardType.ACE, ESuite.DIAMONDS},
+                {EPontoonCardType.JACK, ESuite.HEARTS},
+                {EPontoonCardType.TEN, ESuite.HEARTS},
+                {EPontoonCardType.TWO, ESuite.SPADES},
+                {EPontoonCardType.FIVE, ESuite.CLUBS},
+                {EPontoonCardType.EIGHT, ESuite.DIAMONDS},
         };
     }
 }

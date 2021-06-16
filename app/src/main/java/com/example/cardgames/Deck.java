@@ -32,7 +32,7 @@ public class Deck {
 
     private void generateStandardCards() {
         for (ESuite cardSuit : ESuite.values()){
-            for (ECardType cardType : ECardType.values()){
+            for (EPontoonCardType cardType : EPontoonCardType.values()){
 
                 StandardCard card = new StandardCard(cardType, cardSuit);
                 cards.add(card);

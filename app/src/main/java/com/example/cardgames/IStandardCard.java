@@ -4,5 +4,5 @@ public interface IStandardCard {
 
     ESuite getSuite();
 
-    ECardType getCardType();
+    EPontoonCardType getCardType();
 }

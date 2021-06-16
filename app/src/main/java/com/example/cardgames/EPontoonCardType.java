@@ -2,7 +2,7 @@ package com.example.cardgames;
 
 import androidx.annotation.NonNull;
 
-public enum ECardType {
+public enum EPontoonCardType {
 
     TWO(new int[]{2},"2"),
     THREE(new int[]{3}, "3"),
@@ -21,7 +21,7 @@ public enum ECardType {
     int[] values;
     String string;
 
-    ECardType(int[] values, String string){
+    EPontoonCardType(int[] values, String string){
         this.values = values;
         this.string = string;
 

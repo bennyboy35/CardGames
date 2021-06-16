@@ -1,7 +1,5 @@
 package com.example.cardgames;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -16,7 +14,7 @@ public class Test_StandardCard {
 
 
     @Test(dataProvider = "cardTests")
-    public void test_CardRankTest(ECardType cardType, ESuite cardSuite) {
+    public void test_CardRankTest(EPontoonCardType cardType, ESuite cardSuite) {
         StandardCard card = new StandardCard(cardType, cardSuite);
         int[] actualRanks = card.getRanks();
         int[] expectedRanks = cardType.getRanks();
@@ -26,17 +24,15 @@ public class Test_StandardCard {
 
 
     @Test(dataProvider = "cardTests")
-    public void test_CardSuiteAndType(ECardType cardType, ESuite cardSuite){
+    public void test_CardSuiteAndType(EPontoonCardType cardType, ESuite cardSuite) {
 
         StandardCard card = new StandardCard(cardType, cardSuite);
         assertEquals(cardSuite, card.getSuite());
         assertEquals(cardType, card.getCardType());
-
-
     }
 
     @Test(dataProvider = "cardTests")
-    public void test_IsCardJoker(ECardType cardType, ESuite cardSuite){
+    public void test_IsCardJoker(EPontoonCardType cardType, ESuite cardSuite) {
         StandardCard card = new StandardCard(cardType, cardSuite);
         assertFalse(card.isJoker());
 
@@ -46,18 +42,18 @@ public class Test_StandardCard {
     public Object[][] rankTests() {
 
         return new Object[][]{
-                {ECardType.FOUR, ESuite.HEARTS},
-                {ECardType.ACE, ESuite.DIAMONDS},
-                {ECardType.JACK, ESuite.HEARTS},
-                {ECardType.TEN, ESuite.HEARTS},
-                {ECardType.TWO, ESuite.SPADES},
-                {ECardType.FIVE, ESuite.CLUBS},
-                {ECardType.EIGHT, ESuite.DIAMONDS},
+                {EPontoonCardType.FOUR, ESuite.HEARTS},
+                {EPontoonCardType.ACE, ESuite.DIAMONDS},
+                {EPontoonCardType.JACK, ESuite.HEARTS},
+                {EPontoonCardType.TEN, ESuite.HEARTS},
+                {EPontoonCardType.TWO, ESuite.SPADES},
+                {EPontoonCardType.FIVE, ESuite.CLUBS},
+                {EPontoonCardType.EIGHT, ESuite.DIAMONDS},
         };
     }
 
     @Test(dataProvider = "sameSuiteTests")
-    public void test_AreCardsSameSuite(ECardType cardType1, ESuite cardSuite1, ECardType cardType2, ESuite cardSuite2, boolean expectedSame){
+    public void test_AreCardsSameSuite(EPontoonCardType cardType1, ESuite cardSuite1, EPontoonCardType cardType2, ESuite cardSuite2, boolean expectedSame) {
         StandardCard card1 = new StandardCard(cardType1, cardSuite1);
         StandardCard card2 = new StandardCard(cardType2, cardSuite2);
 
@@ -68,18 +64,18 @@ public class Test_StandardCard {
     public Object[][] sameSuiteTests() {
 
         return new Object[][]{
-                {ECardType.FOUR, ESuite.HEARTS, ECardType.FOUR, ESuite.HEARTS, true},
-                {ECardType.ACE, ESuite.DIAMONDS, ECardType.FOUR, ESuite.HEARTS, false},
-                {ECardType.JACK, ESuite.HEARTS, ECardType.TWO, ESuite.HEARTS, true},
-                {ECardType.TEN, ESuite.HEARTS, ECardType.ACE, ESuite.DIAMONDS, false},
-                {ECardType.TWO, ESuite.SPADES, ECardType.ACE, ESuite.DIAMONDS, false},
-                {ECardType.FIVE, ESuite.CLUBS, ECardType.FIVE, ESuite.CLUBS, true},
-                {ECardType.EIGHT, ESuite.DIAMONDS, ECardType.TWO, ESuite.HEARTS, false},
+                {EPontoonCardType.FOUR, ESuite.HEARTS, EPontoonCardType.FOUR, ESuite.HEARTS, true},
+                {EPontoonCardType.ACE, ESuite.DIAMONDS, EPontoonCardType.FOUR, ESuite.HEARTS, false},
+                {EPontoonCardType.JACK, ESuite.HEARTS, EPontoonCardType.TWO, ESuite.HEARTS, true},
+                {EPontoonCardType.TEN, ESuite.HEARTS, EPontoonCardType.ACE, ESuite.DIAMONDS, false},
+                {EPontoonCardType.TWO, ESuite.SPADES, EPontoonCardType.ACE, ESuite.DIAMONDS, false},
+                {EPontoonCardType.FIVE, ESuite.CLUBS, EPontoonCardType.FIVE, ESuite.CLUBS, true},
+                {EPontoonCardType.EIGHT, ESuite.DIAMONDS, EPontoonCardType.TWO, ESuite.HEARTS, false},
         };
     }
 
     @Test(dataProvider = "sameRankTests")
-    public void test_AreCardsSameRank(ECardType cardType1, ESuite cardSuite1, ECardType cardType2, ESuite cardSuite2, boolean expectedSame){
+    public void test_AreCardsSameRank(EPontoonCardType cardType1, ESuite cardSuite1, EPontoonCardType cardType2, ESuite cardSuite2, boolean expectedSame) {
         StandardCard card1 = new StandardCard(cardType1, cardSuite1);
         StandardCard card2 = new StandardCard(cardType2, cardSuite2);
 
@@ -90,13 +86,13 @@ public class Test_StandardCard {
     public Object[][] sameRankTests() {
 
         return new Object[][]{
-                {ECardType.FOUR, ESuite.HEARTS, ECardType.FOUR, ESuite.HEARTS, true},
-                {ECardType.ACE, ESuite.DIAMONDS, ECardType.FOUR, ESuite.HEARTS, false},
-                {ECardType.JACK, ESuite.HEARTS, ECardType.TWO, ESuite.HEARTS, false},
-                {ECardType.TEN, ESuite.HEARTS, ECardType.ACE, ESuite.DIAMONDS, false},
-                {ECardType.TWO, ESuite.SPADES, ECardType.ACE, ESuite.DIAMONDS, false},
-                {ECardType.FIVE, ESuite.CLUBS, ECardType.FIVE, ESuite.CLUBS, true},
-                {ECardType.EIGHT, ESuite.DIAMONDS, ECardType.TWO, ESuite.HEARTS, false},
+                {EPontoonCardType.FOUR, ESuite.HEARTS, EPontoonCardType.FOUR, ESuite.HEARTS, true},
+                {EPontoonCardType.ACE, ESuite.DIAMONDS, EPontoonCardType.FOUR, ESuite.HEARTS, false},
+                {EPontoonCardType.JACK, ESuite.HEARTS, EPontoonCardType.TWO, ESuite.HEARTS, false},
+                {EPontoonCardType.TEN, ESuite.HEARTS, EPontoonCardType.ACE, ESuite.DIAMONDS, false},
+                {EPontoonCardType.TWO, ESuite.SPADES, EPontoonCardType.ACE, ESuite.DIAMONDS, false},
+                {EPontoonCardType.FIVE, ESuite.CLUBS, EPontoonCardType.FIVE, ESuite.CLUBS, true},
+                {EPontoonCardType.EIGHT, ESuite.DIAMONDS, EPontoonCardType.TWO, ESuite.HEARTS, false},
         };
     }
 

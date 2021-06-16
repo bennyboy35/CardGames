@@ -4,12 +4,12 @@ import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-public class StandardCard extends Card implements IStandardCard{
+public class StandardCard extends Card implements IStandardCard {
 
-    private ECardType cardType;
+    private EPontoonCardType cardType;
     private ESuite cardSuite;
 
-    public StandardCard(ECardType cardType, ESuite cardSuite){
+    public StandardCard(EPontoonCardType cardType, ESuite cardSuite) {
         this.cardSuite = cardSuite;
         this.cardType = cardType;
     }
@@ -19,7 +19,7 @@ public class StandardCard extends Card implements IStandardCard{
         return cardSuite;
     }
 
-    public ECardType getCardType() {
+    public EPontoonCardType getCardType() {
         return cardType;
     }
 
@@ -29,13 +29,8 @@ public class StandardCard extends Card implements IStandardCard{
     }
 
     @Override
-    public boolean isJoker() {
-        return false;
-    }
-
-    @Override
     public boolean isSameSuite(ICard card) {
-        if (card.isJoker()){
+        if (card.isJoker()) {
             //Jokers are wild
             return true;
         }
@@ -44,16 +39,13 @@ public class StandardCard extends Card implements IStandardCard{
 
     @Override
     public boolean isRankEqual(ICard card) {
-        if (card.isJoker()){
+        if (card.isJoker()) {
             //Jokers are wild
             return true;
         }
-        for (int rank : this.getRanks()){
-
-
-            if(ArrayUtils.contains(((StandardCard) card).getRanks(), rank)){
+        for (int rank : this.getRanks()) {
+            if (ArrayUtils.contains(((StandardCard) card).getRanks(), rank)) {
                 return true;
-
             }
         }
         return false;
